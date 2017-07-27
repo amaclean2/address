@@ -1,0 +1,6 @@
+<div ng-class="{selected: n.phoneType === m}"
+		ng-repeat="m in address"
+		class="attr-type-item"
+		ng-click="change({addressID: n.addressID, newAddressType: m})">
+	{{ m }}
+</div>

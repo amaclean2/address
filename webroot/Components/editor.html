@@ -1,0 +1,45 @@
+<div ng-init="modal=false">
+  <delete-modal ng-show="modal" ng-click="modal=!modal "></delete-modal>
+  <div class="edit-button button" ng-click="close()">Done</div>
+  <div class="delete-button button" ng-click="modal=true">Delete</div>
+  <property-edit
+  	class="property-field"
+  	heading="headings[0]"
+  	info="contactInfo.givenName"
+    editable="false">
+  </property-edit>
+  <property-edit
+  	class="property-field"
+  	heading="headings[1]"
+  	info="contactInfo.surname"
+    editable="false">
+  </property-edit>
+  <br />
+  <property-edit
+  	ng-repeat="n in contactPhone"
+  	class="property-field"
+  	heading="n.phoneType"
+  	info="n.phoneNumber"
+    delete="deletePhone(n.phoneID)"
+    editheading=false
+    phone="phoneTypes"
+    change="changePhoneType(n.phoneID, newPhoneType)"
+    editable="true">
+  </property-edit>
+  <add-phone ng-click="addPhone()" class="add-category-button"></add-phone>
+  <property-edit-addr
+  	ng-repeat="n in contactAddress"
+  	class="property-field"
+  	heading="n.addressType"
+  	street="n.street"
+    city="n.city"
+    editheading=true
+    state="n.state"
+    zip="n.postalCode"
+    delete="deleteAddress(n.addressID)"
+    change="changeAddressType(n.addressID, newAddressType)"
+    address="addressTypes"
+    editable="true">
+  </property-edit-addr>
+  <add-address ng-click="addAddress()" class="add-category-button"></add-address>
+</div>

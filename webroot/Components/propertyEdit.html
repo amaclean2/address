@@ -1,0 +1,12 @@
+<div>
+	<property-field-heading
+		ng-if="editable === 'false'"
+		class="property-field-heading smaller">
+	</property-field-heading>
+	<property-heading-phone 
+		ng-init="droplist=false"
+		ng-if="editable === 'true'"
+		class="property-field-heading push-left">
+	</property-heading-phone>
+	<property-edit-info info="info"></property-edit-info>
+</div>

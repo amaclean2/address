@@ -1,0 +1,8 @@
+<property-field-heading ng-if="editable === 'false'" class="property-field-heading smaller"></property-field-heading>
+<property-heading-address ng-if="editable === 'true'" ng-init="droplist=false" class="property-field-heading push-left"></property-heading-address>
+<div class="inline-block right">
+	<property-edit-addr-box class="property-street inline-block" info="street" label="Street"></property-edit-addr-box><br />
+	<property-edit-addr-box class="property-city inline-block" info="city" label="City"></property-edit-addr-box>
+	<property-edit-addr-box class="property-state inline-block" info="state" label="State"></property-edit-addr-box>
+	<property-edit-addr-box class="property-zip inline-block" info="zip" label="Postal Code"></property-edit-addr-box>
+</div>

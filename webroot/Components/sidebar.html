@@ -1,0 +1,19 @@
+<div id="contact-list">
+  <ul>
+    <li ng-repeat="n in contacts">
+      <contact-list-item
+        ng-click="getPerson(n.contactID)"
+        class="contact-list-item"
+        ng-class="{ blue: contactInfo.contactID === n.contactID }"
+      	first-name="(n.contactID === contactInfo.contactID) ? contactInfo.givenName : n.givenName"
+      	last-name="(n.contactID === contactInfo.contactID) ? contactInfo.surname : n.surname">
+      </contact-list-item>
+    </li>
+    <li>
+    	<contact-list-new
+        ng-click = "addContact()"
+    		class="contact-list-item">
+    	</contact-list-new>
+    </li>
+  </ul>
+</div>

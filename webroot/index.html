@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app='AddressBook'>
+  <head>
+    <!-- meta data -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- angular scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+      <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script> -->
+    <script src="script.js"></script>
+    <!-- fontawesome CDN -->
+    <script src="https://use.fontawesome.com/980bc16b05.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./CSS/style.css" />
+    <!-- title -->
+    <title>Address Book</title>
+  </head>
+  <body ng-controller="mainController">
+    <div id="app-window">
+      <h1>{{ title }}</h1>
+      <div class="flex-container">
+        <sidebar id="side-bar"></sidebar>
+        <viewer id="viewer" ng-show="!edit"></viewer>
+        <editor id="editor" ng-show="edit"></editor>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,30 @@
+
+.full-screen-block {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+.modal {
+  width: 100%;
+  max-width: 400px;
+  @include border-radius($radius);
+  height: 200px;
+  margin: 100px auto;
+  @include box-sizing(border-box);
+  padding: 15px;
+  padding-top: 60px;
+  background-color: #fff;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  color: #999;
+  font-weight: lighter;
+  text-align: center;
+}
+.flex {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+}

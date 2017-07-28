@@ -2,6 +2,7 @@ var addressBook = angular.module('AddressBook', []);
 
 addressBook.controller('mainController', function($scope, $http) {
 
+  // initial http request
   $http.get('http://localhost:18080/contacts')
     .then( response => {
       $scope.contacts = response.data })
@@ -39,21 +40,25 @@ addressBook.controller('mainController', function($scope, $http) {
           }
         });
 
-  $scope.title = "Address Book";
-  $scope.newCard = "Add new contact";
-  $scope.headings = [ "Given Name", "Surname" ];
-  $scope.edit = false;
-
+  // initial http request for phone-types
   $http.get('http://localhost:18080/phone-types')
     .then( response => {
       $scope.phoneTypes = response.data;
     })
 
+  // initial http request for address-types
   $http.get('http://localhost:18080/address-types')
     .then( response => {
       $scope.addressTypes = response.data;
     })
 
+  // scope variables
+  $scope.title = "Address Book";
+  $scope.newCard = "Add new contact";
+  $scope.headings = [ "Given Name", "Surname" ];
+  $scope.edit = false;
+
+  // open and close edit view
   $scope.open = () => {
     $scope.edit = true;
   }
@@ -110,6 +115,7 @@ addressBook.controller('mainController', function($scope, $http) {
     }
   }
 
+  // http request for depeting a contact
   $scope.deleteContact = (x) => {
     $scope.edit = false;
 
@@ -167,6 +173,7 @@ addressBook.controller('mainController', function($scope, $http) {
         });
   }
 
+  // ...adding a contact
   $scope.addContact = () => {
     var request = {
       method: 'POST',
@@ -220,9 +227,10 @@ addressBook.controller('mainController', function($scope, $http) {
     $scope.edit = true;
   }
 
+  // ...getting a person
   $scope.getPerson = (id) => {
     $scope.close();
-
+    
     $http.get('http://localhost:18080/contacts/' + id)
       .then( response => {
         $scope.contactInfo = response.data;
@@ -237,6 +245,7 @@ addressBook.controller('mainController', function($scope, $http) {
     });
   }
 
+  // ...adding a phone number
   $scope.addPhone = () => {
     var request = {
       method: 'POST',
@@ -256,6 +265,7 @@ addressBook.controller('mainController', function($scope, $http) {
       });
   }
 
+  // ...adding an address
   $scope.addAddress = () => {
     var request = {
       method: 'POST',
@@ -278,6 +288,7 @@ addressBook.controller('mainController', function($scope, $http) {
       });
   }
 
+  // ...deleting a phone number
   $scope.deletePhone = (x) => {
     $http.delete('http://localhost:18080/contacts/' + $scope.contactInfo.contactID + '/phones/' + x)
       .then( () => {
@@ -288,6 +299,7 @@ addressBook.controller('mainController', function($scope, $http) {
       });
   }
 
+  // ...deleting an address
   $scope.deleteAddress = (x) => {
     $http.delete('http://localhost:18080/contacts/' + $scope.contactInfo.contactID + '/addresses/' + x)
       .then( () => {
@@ -298,6 +310,7 @@ addressBook.controller('mainController', function($scope, $http) {
       });
   }
 
+  // changes the phone type in the user entry
   $scope.changePhoneType = (phoneID, newPhoneType) => {
     for ( i of $scope.contactPhone ) {
       if( i.phoneID === phoneID ) {
@@ -306,6 +319,7 @@ addressBook.controller('mainController', function($scope, $http) {
     }
   }
 
+  // changes the address type in the user entry
   $scope.changeAddressType = (addressID, newAddressType) => {
     for ( i of $scope.contactAddress ) {
       if( i.addressID === addressID ) {
@@ -315,16 +329,17 @@ addressBook.controller('mainController', function($scope, $http) {
   }
 });
 
+//directives rendering
 addressBook.directive('sidebar', () => {
-  return {restrict: 'E', templateUrl: './Components/sidebar.html'}
+  return {restrict: 'E', templateUrl: '../Components/sidebar.html'}
 });
 
 addressBook.directive('editor', () => {
-  return {restrict: 'E', templateUrl: './Components/editor.html'}
+  return {restrict: 'E', templateUrl: '../Components/editor.html'}
 });
 
 addressBook.directive('viewer', () => {
-  return {restrict: 'E', templateUrl: './Components/viewer.html'}
+  return {restrict: 'E', templateUrl: '../Components/viewer.html'}
 })
 
 addressBook.directive('contactListItem', () => {
@@ -334,7 +349,7 @@ addressBook.directive('contactListItem', () => {
       firstName: '=',
       lastName: '=',
     },
-    templateUrl: './Components/contactListItem.html' 
+    templateUrl: '../Components/contactListItem.html' 
   };
 });
 
@@ -353,7 +368,7 @@ addressBook.directive('propertyField', () => {
       info: '=',
       moreInfo: '=',
     },
-    templateUrl: './Components/propertyField.html'
+    templateUrl: '../Components/propertyField.html'
   }
 });
 
@@ -369,7 +384,7 @@ addressBook.directive('propertyEdit', () => {
       change: '&',
       phone: '='
     },
-    templateUrl: './Components/propertyEdit.html'
+    templateUrl: '../Components/propertyEdit.html'
   }
 });
 
@@ -388,7 +403,7 @@ addressBook.directive('propertyEditAddr', () => {
       change: '&',
       address: '='
     },
-    templateUrl: './Components/propertyEditAddr.html'
+    templateUrl: '../Components/propertyEditAddr.html'
   }
 });
 
@@ -402,20 +417,24 @@ addressBook.directive('propertyFieldHeading', () => {
 addressBook.directive('propertyHeadingPhone', () => {
   return {
     restrict: 'E',
-    template: `<phone-list ng-click='droplist=!droplist' ng-show='droplist' class="attr-type-list"></phone-list>
+    template: `<phone-list ng-click='droplist=!droplist' ng-show='droplist' class="attr-type-list expand-down"></phone-list>
               <i ng-click="delete({x: contactPhone.phoneID})" class="fa fa-minus" aria-hidden="true"></i> 
-              <span>{{ heading }}</span>
-              <i ng-click="droplist=!droplist" class="fa fa-chevron-down" aria-hidden="true"></i>`
+              <div class="inline-block open-list" ng-click="droplist=!droplist">
+                <span>{{ heading }}</span>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+              </div>`
   }
 });
 
 addressBook.directive('propertyHeadingAddress', () => {
   return {
     restrict: 'E',
-    template: `<address-list ng-click='droplist=!droplist' ng-show='droplist' class="attr-type-list"></address-list>
+    template: `<address-list ng-click='droplist=!droplist' ng-show='droplist' class="attr-type-list expand-down"></address-list>
               <i ng-click="delete({x: contactAddress.addressID})" class="fa fa-minus" aria-hidden="true"></i> 
-              <span>{{ heading }}</span>
-              <i ng-click="droplist=!droplist" class="fa fa-chevron-down" aria-hidden="true"></i>`
+              <div class="inline-block open-list" ng-click="droplist=!droplist" >
+                <span>{{ heading }}</span>
+                <i ng-click="droplist=!droplist" class="fa fa-chevron-down" aria-hidden="true"></i>
+              </div>`
   }
 });
 
@@ -469,21 +488,21 @@ addressBook.directive('addAddress', () => {
 addressBook.directive('phoneList', () => {
   return {
     restrict: 'E',
-    templateUrl: './Components/phoneList.html'
+    templateUrl: '../Components/phoneList.html'
   }
 });
 
 addressBook.directive('addressList', () => {
   return {
     restrict: 'E',
-    templateUrl: './Components/addressList.html'
+    templateUrl: '../Components/addressList.html'
   }
 });
 
 addressBook.directive('deleteModal', () => {
   return {
     restrict: 'E',
-    templateUrl: './Components/deleteModal.html'
+    templateUrl: '../Components/deleteModal.html'
   }
 })
 

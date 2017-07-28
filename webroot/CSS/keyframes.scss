@@ -1,0 +1,15 @@
+@keyframes fadeIn {
+  from { @include opacity(0); }
+  to { @include opacity(1); }
+}
+
+@keyframes expandDown {
+	from {
+					max-height: 0;
+					transform-origin: 0% 0%;
+			 }
+	to {
+				max-height: 200px;
+				transform-origin: 0% 0%;
+		 }
+}

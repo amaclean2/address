@@ -1,0 +1,10 @@
+{
+  "name": "Address Book",
+  "short_name": "Address Book",
+  "lang": "eng",
+  "autor": "Andrew Maclean",
+  "start_url": ".",
+  "display": "browser",
+  "background_color": "#fff",
+  "description": "aeroHive project"
+}

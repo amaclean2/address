@@ -1,24 +1,24 @@
 <div>
   <div class="edit-button button" ng-click="open()">Edit</div>
   <property-field
-  	class="property-field slide-right"
+  	class="property-field fade-in"
   	heading="headings[0]"
   	info="contactInfo.givenName">
   </property-field>
   <property-field
-  	class="property-field slide-right"
+  	class="property-field fade-in"
   	heading="headings[1]"
   	info="contactInfo.surname">
   </property-field>
   <property-field
   	ng-repeat="n in contactPhone"
-  	class="property-field slide-right"
+  	class="property-field fade-in"
   	heading="n.phoneType"
   	info="n.phoneNumber">
   </property-field>
   <property-field
   	ng-repeat="n in contactAddress"
-  	class="property-field slide-right"
+  	class="property-field fade-in"
   	heading="n.addressType"
   	info="n.street"
   	more-info="n.city + ', ' + n.state + ' ' + n.postalCode">

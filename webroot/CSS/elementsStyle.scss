@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+h1 {
+  font-weight: lighter;
+  display: inline-block;
+  margin: 15px;
+  color: #666;
+}
+i {
+  color: #999;
+}
+ul {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+input {
+  font-size: 16px;
+  padding: 0.3em 0.8em;
+  @include border-radius($radius);
+  border: 1px solid #ccc;
+  @include box-sizing(border-box);
+  max-width: 100%;
+}
+label {
+  font-size: 13px;
+  font-weight: bolder;
+  color: #666;
+}
+b {
+  font-style: italic;
+}
+a {
+  color: inherit;
+}

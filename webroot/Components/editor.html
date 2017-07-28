@@ -1,15 +1,15 @@
-<div ng-init="modal=false">
+<div ng-init="modal=false" class="fade-in">
   <delete-modal ng-show="modal" ng-click="modal=!modal "></delete-modal>
   <div class="edit-button button" ng-click="close()">Done</div>
   <div class="delete-button button" ng-click="modal=true">Delete</div>
   <property-edit
-  	class="property-field"
+  	class="property-field fade-in"
   	heading="headings[0]"
   	info="contactInfo.givenName"
     editable="false">
   </property-edit>
   <property-edit
-  	class="property-field"
+  	class="property-field fade-in"
   	heading="headings[1]"
   	info="contactInfo.surname"
     editable="false">
@@ -17,7 +17,7 @@
   <br />
   <property-edit
   	ng-repeat="n in contactPhone"
-  	class="property-field"
+  	class="property-field expand-down"
   	heading="n.phoneType"
   	info="n.phoneNumber"
     delete="deletePhone(n.phoneID)"
@@ -29,7 +29,7 @@
   <add-phone ng-click="addPhone()" class="add-category-button"></add-phone>
   <property-edit-addr
   	ng-repeat="n in contactAddress"
-  	class="property-field"
+  	class="property-field expand-down"
   	heading="n.addressType"
   	street="n.street"
     city="n.city"

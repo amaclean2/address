@@ -1,28 +1,48 @@
 <!DOCTYPE html>
-<html ng-app='AddressBook'>
+<html ng-app='AddressBook' ng-cloak>
   <head>
     <!-- meta data -->
     <meta charset="utf-8">
+    <!-- viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- angular scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
-      <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script> -->
-    <script src="script.js"></script>
+    <!-- directive builder -->
+    <script src="./JavaScript/script.js"></script>
     <!-- fontawesome CDN -->
     <script src="https://use.fontawesome.com/980bc16b05.js"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="./CSS/style.css" />
+    <!-- App Manifest -->
+    <link rel="manifest" href="./manifest.json" />
     <!-- title -->
     <title>Address Book</title>
   </head>
   <body ng-controller="mainController">
+    <!-- Angular Directives, created in script.js -->
+    <!--
+      Andrew Maclean
+      July 28, 2017
+      Address Book Project
+
+      Some of the animations are a little bit choppy, but apart from that, I think the rest
+      of it is good.
+      I tried to make all of the styles that it applies to, cross-borwser specific, but there
+      might be some that I missed.
+
+      I hope it turns out well and I definitely appreciate any feedback
+
+      Thank you
+      -Andrew Maclean
+    -->
     <div id="app-window">
       <h1>{{ title }}</h1>
-      <div class="flex-container">
+      <div id="flex-container">
         <sidebar id="side-bar"></sidebar>
-        <viewer id="viewer" ng-show="!edit"></viewer>
-        <editor id="editor" ng-show="edit"></editor>
-        </div>
+          <div id="snap">
+            <viewer id="viewer" ng-show="!edit"></viewer>
+            <editor id="editor" ng-show="edit"></editor>
+          </div>
       </div>
     </div>
 

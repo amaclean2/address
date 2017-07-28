@@ -1,0 +1,34 @@
+@mixin border-radius($param) {
+  -webkit-border-radius: $param;
+     -moz-border-radius: $param;
+      -ms-border-radius: $param;
+          border-radius: $param;
+}
+
+@mixin animation($param) {
+  -webkit-animation: $param;
+     -moz-animation: $param;
+      -ms-animation: $param;
+          animation: $param;
+}
+
+@mixin box-sizing($param) {
+  -webkit-box-sizing: $param;
+     -moz-box-sizing: $param;
+      -ms-box-sizing: $param;
+          box-sizing: $param;
+}
+
+@mixin opacity($param) {
+  -webkit-opacity: $param;
+     -moz-opacity: $param;
+      -ms-opacity: $param;
+          opacity: $param;
+}
+
+@mixin transition($param) {
+  -webkit-transition: $param;
+     -moz-transition: $param;
+      -ms-transition: $param;
+          transition: $param;
+}

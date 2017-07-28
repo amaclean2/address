@@ -1,0 +1,30 @@
+
+#side-bar {
+  width: 100%;
+  min-width: 320px;
+  height: 80vh;
+  background: linear-gradient(#dadada, #eee);
+  flex: 1;
+  overflow-y: auto;
+  border-bottom-left-radius: 5px;
+}
+.contact-list-item {
+  @include box-sizing(border-box);
+  width: 100%;
+  padding: 0.5em;
+  background-color: #fff;
+  display: inline-block;
+  font-size: 1.2em;
+  cursor: pointer;
+  @include transition($trans);
+  border: 1px solid #ccc;
+  @include border-radius($radius);
+  margin: 2px 0;
+}
+.contact-list-item:hover {
+  background-color: $hoverColor;
+}
+.blue {
+  font-weight: bold;
+  color: #06b;
+}

@@ -1,0 +1,89 @@
+
+
+$hoverColor: #EEE;
+$accentColor: #0AF;
+$warnColor: #F33;
+$radius: 3px;
+$trans: all 0.3s ease-in-out;
+
+@import 'mixins';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import 'elementsStyle';
+@import 'keyframes';
+@import 'idStyle';
+@import 'editFields';
+@import 'sidebarStyle';
+@import 'buttons';
+@import 'modalStyle';
+
+.fa-plus {
+  color: #7B7;
+  margin-right: 13px;
+  padding: 0 5px;
+}
+.fa-minus {
+  color: #C00;
+  margin-right: 8px;
+  @include border-radius(50%);
+  padding: 5px 7px;
+  @include transition($trans);
+  cursor: pointer;
+  &:hover {
+    background-color: $hoverColor;
+  }
+}
+.fa-chevron-down {
+  padding-left: 8px;
+}
+.open-list {
+  color: #CCC;
+  padding: 6px 7px;
+  cursor: pointer;
+}
+.flexed {
+  display: inline-block;
+  position: relative;
+}
+.inline-block {
+  display: inline-block;
+}
+.right {
+  max-width: 350px;
+}
+.push-left {
+  margin-left: -37px;
+  width: 216px;
+}
+.small-margin {
+  margin: 5px;
+  width: calc(100% - 10px);
+}
+.smaller {
+  width: 180px;
+}
+.attr-type-list {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.attr-type-item {
+  width: 200px;
+  @include box-sizing(border-box);
+  padding: 5px 15px;
+  @include transition($trans);
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+    background-color: $hoverColor;
+  }
+}
+.fade-in {
+  @include animation(fadeIn 0.5s);
+}
+.expand-down {
+
+  @include animation(expandDown 0.5s);
+}
